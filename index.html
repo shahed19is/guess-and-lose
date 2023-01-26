@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;700&family=Pacifico&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Guess & Lose</title>
+</head>
+
+<body>
+    <!-- Load all audio -->
+    <!-- 1. Audio of click effect -->
+    <audio id="clickEffect">
+        <source src="./audio/click-effect.mp3" type="audio/mp3">
+    </audio>
+    <audio id="clickEffect">
+        <source src="./audio/win-effect.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- Header of the page -->
+    <header>
+        <h1>Guess & Lose</h1>
+        <p>a game by <b>SHAHED</b></p>
+    </header>
+
+    <!-- Main body starts frrom here -->
+    <main>
+
+        <!-- First page and intruction page of the game -->
+        <section class="inst" id="pageOne">
+
+            <!-- Instruction heading -->
+            <div class="head">
+                <h3>Instructions</h3>
+            </div>
+
+            <!-- Some lists if instructions -->
+            <ul>
+                <li>It is a guessing game.</li>
+                <li>You can know about your six-sense</li>
+                <li>A random number between 0 to 9 will be generated autometically</li>
+                <li>This random number will be hidden</li>
+                <li>Player has to guess a number and submit it</li>
+                <li>After that palyer has to flip the random numbered card</li>
+                <li>If player guessed the number correctly then he/she will be win</li>
+                <li>Otherwise player will be lost.</li>
+            </ul>
+
+            <!-- Button to enter the main menu -->
+            <button id="enter">
+                <p>Enter</p>
+                <span class="material-symbols-rounded">
+                    play_circle
+                </span>
+            </button>
+        </section>
+
+        <!-- It is the main menu -->
+        <section class="menu hide" id="pageTwo">
+
+            <!-- Menu head -->
+            <div class="head">
+                <h3>Main Menu</h3>
+                <p>Select a playing mode</p>
+            </div>
+
+            <!-- Menu options as cards -->
+            <div class="cards">
+
+                <!-- Card for single player -->
+                <div class="card option" id="single">
+                    <span class="material-symbols-rounded">
+                        person
+                    </span>
+                    <p>Single Player</p>
+                </div>
+
+                <!-- Card for multiple player -->
+                <div class="card option" id="multiple">
+                    <span class="material-symbols-rounded">
+                        group
+                    </span>
+                    <p>Multiple Players</p>
+                </div>
+            </div>
+
+            <!-- Button for go to the next menu -->
+            <button id="next">
+                <p>Next</p>
+                <span class="material-symbols-rounded">
+                    chevron_right
+                </span>
+            </button>
+        </section>
+
+        <!-- Second menu options where score mode is selected -->
+        <section class="menu hide" id="pageThree">
+
+            <!-- Menu Head -->
+            <div class="head">
+                <h3>Main Menu</h3>
+                <p>Select a score mode</p>
+            </div>
+
+            <!-- Cards for menu options -->
+            <div class="cards">
+
+                <!-- Card for unlimited mode -->
+                <div class="card option" id="unlimited">
+                    <p>Unlimited</p>
+                    <p class="info">This game will not end untill you stop.</p>
+                </div>
+
+                <!-- Card for score limited mode -->
+                <div class="card option" id="limited">
+                    <p>Score Based</p>
+                    <p class="info">Default Wining Score: 13</p>
+                </div>
+            </div>
+
+            <!-- Button for start the game -->
+            <button id="play">
+                <p>Play</p>
+                <span class="material-symbols-rounded">
+                    stadia_controller
+                </span>
+            </button>
+        </section>
+
+        <!-- Main game window -->
+        <section class="menu hide" id="pageFour">
+
+            <!-- Game statistics -->
+            <div class="stats">
+                <p><span id="score-mode"></span><span id="guesses">0</span></p>
+                <p>Correct Guesses: <span id="correct-guesses">0</span></p>
+            </div>
+
+            <!-- Main two cards where the game will held -->
+            <div class="cards">
+
+                <!-- Card holder to flip it left right -->
+                <div class="card holder">
+                    <div class="flip-card-inner" id="fci">
+                        <div class=" card front">
+                            <p>guess a number between 0 - 9</p>
+                            <p>then flip the card</p>
+                        </div>
+                        <div class="card back">
+                            <span id="guess-number"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card which will take input from user -->
+                <div class="card input" id="inputCard">
+                    <input type="text" name="guess" id="guessInput" maxlength="1" autocomplete="off" required>
+                    <label for="guess"><span>Enter<br>your<br>guess<br>here</span></label>
+                </div>
+            </div>
+
+            <!-- Three button holder -->
+            <div class="buttons">
+
+                <!-- Button for go back to menu -->
+                <button id="goBack">
+                    <span class="material-symbols-rounded">
+                        description
+                    </span>
+                    <p>Result</p>
+                </button>
+
+                <!-- Button for flip the guessed card -->
+                <button id="flipC">
+                    <p>Flip</p>
+                    <span class="material-symbols-rounded">
+                        360
+                    </span>
+                </button>
+
+                <!-- Button for go to next game -->
+                <button id="nextGame">
+                    <p>Next</p>
+                    <span class="material-symbols-rounded">
+                        chevron_right
+                    </span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Result window -->
+        <section class="menu hide" id="pageFive">
+            <h3>Your Result</h3>
+            <div class="result">
+                <p class="resultP">Total try of guessing: <span id="result-try">0</span></p>
+                <p class="resultP">Made correct guesses: <span id="result-cor">0</span></p>
+                <p class="resultP" style="border: 1px solid; "><b>You have <span id="result-rat">0</span>% of
+                        six-sense</b></p>
+            </div>
+            <button id="menuOpen">
+                <span class="material-symbols-rounded">
+                    menu_open
+                </span>
+                <p>Menu</p>
+            </button>
+        </section>
+    </main>
+
+    <!-- Footer of the page -->
+    <footer>
+        <p>Idea by <a href="https://www.facebook.com/profile.php?id=100034531201240" target="_blank">Ashraful Alam Shanto</a></p>
+    </footer>
+    <script src="./script.js"></script>
+</body>
+
+</html>
