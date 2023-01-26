@@ -1,4 +1,4 @@
-This is simple game created by SHAHED ISLAM SWAPNW and idea given by ASHRAFUL ALAM SHANTO.
+This is a simple game created by SHAHED ISLAM SWAPNW and idea given by ASHRAFUL ALAM SHANTO.
 All the rights reserved by TWO of us.
 
 This game to live on 17 January 2023 approximately at 2:00 AM
