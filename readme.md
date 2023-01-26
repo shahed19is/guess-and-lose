@@ -1,4 +1,4 @@
-Play the game [here](https://shahed19is.github.io/guess-and-loss/)
+# Play the game [here](https://shahed19is.github.io/guess-and-loss/)
 
 This is a simple game created by SHAHED ISLAM SWAPNW and idea given by ASHRAFUL ALAM SHANTO.
 All the rights reserved by TWO of us.
