@@ -258,6 +258,7 @@ input:valid + label {
 
 footer {
   margin-top: var(--margin-head-foot);
+  text-align: center;
 }
 
 a, a:visited {

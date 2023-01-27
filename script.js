@@ -208,6 +208,11 @@ function resultWindow() {
   windows[4].classList.remove('hide');
   resultTry.innerText = totalGuessCount;
   resultCorrect.innerText = correctGuessCount;
+
+  if(totalGuessCount === 0) {
+    resultRatio.innerHTML = "&infin;";
+    return;
+  }
   resultRatio.innerText = parseFloat(
     (correctGuessCount / totalGuessCount) * 100
   ).toFixed(2);
